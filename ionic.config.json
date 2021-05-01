@@ -1,0 +1,7 @@
+{
+  "name": "FoodMatch",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
