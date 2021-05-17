@@ -1,0 +1,72 @@
+.filterButton{
+  --background: #FFD791;
+  --color: #000000;
+}
+
+ion-content{
+  --ion-background-color:#FBF3FF;
+  position: relative;
+}
+
+.raccoonImg{
+  position: absolute;
+  width: 84px;
+  height: 71px;
+  right: 27px;
+  top: 44px;
+  image-rendering: auto;
+}
+
+.recipePanel{
+  position: absolute;
+  top: 121px;
+  left: 27px;
+}
+
+.tags{
+  position: relative;
+}
+
+.tabText{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tag1{
+  position: relative;
+  float: left;
+  color: #6D271F
+}
+
+.tag2{
+  position: relative;
+  float: left;
+  color: #054644;
+}
+
+.tag3{
+  position: relative;
+  float: left;
+  color: #000000;
+}
+
+.placeholderCard{
+  position: relative;
+
+}
+
+
+.arrows{
+  position: absolute;
+  bottom: 10%;
+}
+
+.arrowL{
+  float: left;
+}
+
+.arrowR{
+  float: left;
+}
