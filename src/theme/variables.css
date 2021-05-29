@@ -1,8 +1,17 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
 
+@font-face {
+  font-family: TraneFont;
+  src: url(../pages/fonts/Raleway-Font.ttf);
+  font-weight: 800;
+}
+
 /** Ionic CSS Variables **/
 :root {
+  /** primary font setup **/
+  --ion-font-family: TraneFont;
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
