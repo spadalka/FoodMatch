@@ -1,6 +1,18 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Tab3.css';
+import {
+  IonButton,
+  IonCol,
+  IonContent,
+  IonGrid,
+  IonHeader,
+  IonItem,
+  IonLabel,
+  IonPage,
+  IonRow,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import ExploreContainer from "../components/ExploreContainer";
+import "./Tab3.css";
 
 const Tab3: React.FC = () => {
   return (
@@ -12,13 +24,38 @@ const Tab3: React.FC = () => {
           </IonTitle>
         </IonToolbar>
       </IonHeader>
+
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Tab 3</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer name="Tab 3 page" />
+        <IonGrid>
+          <IonRow class="ion-text-center">
+            <IonCol>
+              <IonButton color="cyan">Tomato</IonButton>
+            </IonCol>
+            <IonCol>
+              <IonButton color="cyan">Potato</IonButton>
+            </IonCol>
+          </IonRow>
+          <IonRow class="ion-text-center">
+            <IonCol>
+              <IonButton color="cyan">Lettuce</IonButton>
+            </IonCol>
+            <IonCol>
+              <IonButton color="cyan">Broccoli</IonButton>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
+
+        <IonGrid>
+          <IonRow class="ion-text-center">
+            <IonCol>
+              <IonButton color="danger" expand="block">
+                <IonLabel color="dark">
+                  Edit
+                  </IonLabel>
+              </IonButton>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
       </IonContent>
     </IonPage>
   );
