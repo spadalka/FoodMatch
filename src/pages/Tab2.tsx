@@ -1,4 +1,4 @@
-import { IonCard, IonCardContent, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonGrid, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab2.css';
 import RecipeSlip from '../components/RecipeSlip';
 
@@ -76,6 +76,7 @@ const Tab2: React.FC = () => {
             return <RecipeSlip recipeName={Rec.Recipe.Name} recipeDuration={Rec.Recipe.Duration} missingCount={Rec.Recipe.Ingredients.length}/>
           })}
         </IonGrid>
+        
       </IonContent>
     </IonPage>
   );
