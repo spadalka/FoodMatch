@@ -1,4 +1,4 @@
-import { IonContent, IonGrid, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonItem, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab2.css';
 import RecipeSlip from '../components/RecipeSlip';
 
@@ -72,6 +72,11 @@ const Tab2: React.FC = () => {
 
       <IonContent fullscreen>
         <IonGrid>
+          <IonRow>
+            <IonCol className="ion-text-right">
+              <IonButton color="warning" size="small">Filter</IonButton>
+            </IonCol>
+          </IonRow>
           {databaseInfo.Cookbook.map((Rec) => {
             return <RecipeSlip recipeName={Rec.Recipe.Name} recipeDuration={Rec.Recipe.Duration} missingCount={Rec.Recipe.Ingredients.length}/>
           })}
