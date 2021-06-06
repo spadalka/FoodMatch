@@ -21,7 +21,7 @@ const RecipeSlip: React.FC<{
           <IonCardContent>
             <h2>
               {props.recipeDuration}
-              <br></br>
+              <br/>
               {props.missingCount} Ingredients Involved
             </h2>
           </IonCardContent>
