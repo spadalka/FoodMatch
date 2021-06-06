@@ -1,6 +1,7 @@
-import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonItem, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonItem, IonModal, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab2.css';
 import RecipeSlip from '../components/RecipeSlip';
+import { useState } from 'react';
 
 const databaseInfo = {
   "Cookbook": [
@@ -59,7 +60,9 @@ const databaseInfo = {
   ]
 }
 
-const Tab2: React.FC = () => {
+export const Tab2: React.FC = () => {
+  const[showModal, setShowModal] = useState(false);
+
   return (
     <IonPage>
       <IonHeader>
@@ -71,10 +74,15 @@ const Tab2: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen>
+        <IonModal isOpen={showModal}>
+          <p>test</p>
+          <IonButton onClick={()=> setShowModal(false)}>Close Modal</IonButton>
+        </IonModal>
+
         <IonGrid>
           <IonRow>
             <IonCol className="ion-text-right">
-              <IonButton color="warning" size="small">Filter</IonButton>
+              <IonButton color="warning" size="small" onClick={()=>setShowModal(true)}>Filter</IonButton>
             </IonCol>
           </IonRow>
           {databaseInfo.Cookbook.map((Rec) => {
