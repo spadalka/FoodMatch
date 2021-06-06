@@ -1,7 +1,8 @@
-import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonItem, IonModal, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonModal, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab2.css';
 import RecipeSlip from '../components/RecipeSlip';
 import { useState } from 'react';
+import {closeOutline} from 'ionicons/icons';
 
 const databaseInfo = {
   "Cookbook": [
@@ -63,26 +64,45 @@ const databaseInfo = {
 export const Tab2: React.FC = () => {
   const[showModal, setShowModal] = useState(false);
 
+  let openRecipe = true;
+  let currentID = "null";
+
+  const openRecipePage = (ID: string) => {
+    currentID = ID;
+    setShowModal(true);
+  }
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar color="danger">
           <IonTitle color="dark" class="ion-padding">
-            Recipe<br></br>Library
+            Recipe<br/>Library
           </IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen>
+        
         <IonModal isOpen={showModal}>
-          <p>test</p>
-          <IonButton onClick={()=> setShowModal(false)}>Close Modal</IonButton>
+          <IonHeader>
+            <IonToolbar color="danger">
+              <IonTitle color="dark" class="ion-padding">
+                Recipe
+              </IonTitle>
+              <IonIcon slot="end" icon={closeOutline} color="dark" size="large" onClick={()=> setShowModal(false)} class="ion-padding"></IonIcon>
+            </IonToolbar>
+          </IonHeader>
+          <IonContent>
+            <IonImg src="https://lh3.googleusercontent.com/proxy/HqhAqJFzfO-aOwC057fOfMj-CtRDWUXb_uGIFtMuecMsCGSoPIyxGu5ThFUL0l92BI0mgPIG-5S58eQNO7ZaMPUcQdMgVi87iD_sSeafx8OdQ5fqVDH2qJCR51b4y5cvpBZnXO2nfxgFAw" alt="food wallpaper"/>
+          </IonContent>
+          
         </IonModal>
 
         <IonGrid>
           <IonRow>
             <IonCol className="ion-text-right">
-              <IonButton color="warning" size="small" onClick={()=>setShowModal(true)}>Filter</IonButton>
+              <IonButton color="warning" size="small" onClick={()=>openRecipePage("Filter_Recipes")}>Filter</IonButton>
             </IonCol>
           </IonRow>
           {databaseInfo.Cookbook.map((Rec) => {
