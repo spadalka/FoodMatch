@@ -15,7 +15,7 @@ const RecipeSlip: React.FC<{
   return (
     <IonRow>
       <IonCol>
-        <IonCard color="warning" class="ion-no-margin">
+        <IonCard color="warning" class="ion-no-margin" button={true}>
           <IonCardTitle class="ion-padding">{props.recipeName}</IonCardTitle>
 
           <IonCardContent>
