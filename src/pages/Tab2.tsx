@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonModal, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCard, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonList, IonModal, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab2.css';
 import RecipeSlip from '../components/RecipeSlip';
 import { useState } from 'react';
@@ -101,21 +101,36 @@ export const Tab2: React.FC = () => {
             <IonItem>
               Owned Ingredients
             </IonItem>
+
             <IonGrid>
               <IonRow>
-                <IonCol>
-                  <IonCard color="warning" class="ion-padding">
-                    <IonLabel>
-                      test
-                    </IonLabel>
-                  </IonCard>
+                <IonCol id="test">
+                  <IonList>
+                    <IonItem color="warning">
+                      <IonLabel>
+                        test
+                      </IonLabel>
+                    </IonItem>
+                    <IonItem color="warning">
+                      <IonLabel>
+                        test
+                      </IonLabel>
+                    </IonItem>
+                  </IonList>
                 </IonCol>
-                <IonCol>
-                  <IonCard color="warning" class="ion-padding">
-                    <IonLabel>
-                      test
-                    </IonLabel>
-                  </IonCard>
+                <IonCol offset="1" id="test">
+                  <IonList>
+                    <IonItem color="warning">
+                      <IonLabel>
+                        test
+                      </IonLabel>
+                    </IonItem>
+                    <IonItem color="warning">
+                      <IonLabel>
+                        test
+                      </IonLabel>
+                    </IonItem>
+                  </IonList>
                 </IonCol>
               </IonRow>
             </IonGrid>
