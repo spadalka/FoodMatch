@@ -1,4 +1,4 @@
-import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonModal, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCard, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonModal, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab2.css';
 import RecipeSlip from '../components/RecipeSlip';
 import { useState } from 'react';
@@ -85,6 +85,7 @@ export const Tab2: React.FC = () => {
       <IonContent fullscreen>
         
         <IonModal isOpen={showModal}>
+          
           <IonHeader>
             <IonToolbar color="danger">
               <IonTitle color="dark" class="ion-padding">
@@ -93,8 +94,31 @@ export const Tab2: React.FC = () => {
               <IonIcon slot="end" icon={closeOutline} color="dark" size="large" onClick={()=> setShowModal(false)} class="ion-padding"></IonIcon>
             </IonToolbar>
           </IonHeader>
+
           <IonContent>
-            <IonImg src="https://lh3.googleusercontent.com/proxy/HqhAqJFzfO-aOwC057fOfMj-CtRDWUXb_uGIFtMuecMsCGSoPIyxGu5ThFUL0l92BI0mgPIG-5S58eQNO7ZaMPUcQdMgVi87iD_sSeafx8OdQ5fqVDH2qJCR51b4y5cvpBZnXO2nfxgFAw" alt="food wallpaper"/>
+            <IonImg src="https://wallpaperaccess.com/full/4393443.jpg" alt="food wallpaper"/>
+            
+            <IonItem>
+              Owned Ingredients
+            </IonItem>
+            <IonGrid>
+              <IonRow>
+                <IonCol>
+                  <IonCard color="warning" class="ion-padding">
+                    <IonLabel>
+                      test
+                    </IonLabel>
+                  </IonCard>
+                </IonCol>
+                <IonCol>
+                  <IonCard color="warning" class="ion-padding">
+                    <IonLabel>
+                      test
+                    </IonLabel>
+                  </IonCard>
+                </IonCol>
+              </IonRow>
+            </IonGrid>
           </IonContent>
           
         </IonModal>
