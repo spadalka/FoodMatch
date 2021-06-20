@@ -1,8 +1,8 @@
 import { IonButton, IonCard, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonList, IonModal, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab2.css';
 import RecipeSlip from '../components/RecipeSlip';
+import ModalSubscreen from '../components/ModalSubscreen';
 import { useState } from 'react';
-import {closeOutline} from 'ionicons/icons';
 
 const databaseInfo = {
   "Cookbook": [
@@ -67,9 +67,13 @@ export const Tab2: React.FC = () => {
   let openRecipe = true;
   let currentID = "null";
 
-  const openRecipePage = (ID: string) => {
+  const openModalPage = (ID: string) => {
     currentID = ID;
     setShowModal(true);
+  }
+
+  const closeModal = () => {
+    setShowModal(false);
   }
 
   return (
@@ -85,63 +89,13 @@ export const Tab2: React.FC = () => {
       <IonContent fullscreen>
         
         <IonModal isOpen={showModal}>
-          
-          <IonHeader>
-            <IonToolbar color="danger">
-              <IonTitle color="dark" class="ion-padding">
-                Recipe
-              </IonTitle>
-              <IonIcon slot="end" icon={closeOutline} color="dark" size="large" onClick={()=> setShowModal(false)} class="ion-padding"></IonIcon>
-            </IonToolbar>
-          </IonHeader>
-
-          <IonContent>
-            <IonImg src="https://wallpaperaccess.com/full/4393443.jpg" alt="food wallpaper"/>
-            
-            <IonItem>
-              Owned Ingredients
-            </IonItem>
-
-            <IonGrid>
-              <IonRow>
-                <IonCol id="test">
-                  <IonList>
-                    <IonItem color="warning">
-                      <IonLabel>
-                        test
-                      </IonLabel>
-                    </IonItem>
-                    <IonItem color="warning">
-                      <IonLabel>
-                        test
-                      </IonLabel>
-                    </IonItem>
-                  </IonList>
-                </IonCol>
-                <IonCol offset="1" id="test">
-                  <IonList>
-                    <IonItem color="warning">
-                      <IonLabel>
-                        test
-                      </IonLabel>
-                    </IonItem>
-                    <IonItem color="warning">
-                      <IonLabel>
-                        test
-                      </IonLabel>
-                    </IonItem>
-                  </IonList>
-                </IonCol>
-              </IonRow>
-            </IonGrid>
-          </IonContent>
-          
+          <ModalSubscreen closeFunction={(closeModal)}></ModalSubscreen>
         </IonModal>
 
         <IonGrid>
           <IonRow>
             <IonCol className="ion-text-right">
-              <IonButton color="warning" size="small" onClick={()=>openRecipePage("Filter_Recipes")}>Filter</IonButton>
+              <IonButton color="warning" size="small" onClick={()=>openModalPage("Filter_Recipes")}>Filter</IonButton>
             </IonCol>
           </IonRow>
           {databaseInfo.Cookbook.map((Rec) => {
