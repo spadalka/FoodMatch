@@ -11,11 +11,12 @@ const RecipeSlip: React.FC<{
   recipeName: string;
   recipeDuration: string;
   missingCount: number;
+  openModalFunction: (input : string) => void;
 }> = (props) => {
   return (
     <IonRow>
       <IonCol>
-        <IonCard color="warning" class="ion-no-margin" button={true}>
+        <IonCard color="warning" class="ion-no-margin" button={true} onClick={()=>props.openModalFunction(props.recipeName)}>
           <IonCardTitle class="ion-padding">{props.recipeName}</IonCardTitle>
 
           <IonCardContent>

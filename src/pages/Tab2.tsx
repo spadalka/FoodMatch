@@ -99,7 +99,7 @@ export const Tab2: React.FC = () => {
             </IonCol>
           </IonRow>
           {databaseInfo.Cookbook.map((Rec) => {
-            return <RecipeSlip recipeName={Rec.Recipe.Name} recipeDuration={Rec.Recipe.Duration} missingCount={Rec.Recipe.Ingredients.length}/>
+            return <RecipeSlip recipeName={Rec.Recipe.Name} recipeDuration={Rec.Recipe.Duration} missingCount={Rec.Recipe.Ingredients.length} openModalFunction={openModalPage}/>
           })}
         </IonGrid>
         
