@@ -95,7 +95,8 @@ export const Tab2: React.FC = () => {
         <IonGrid>
           <IonRow>
             <IonCol className="ion-text-right">
-              <IonButton color="warning" size="small" onClick={()=>openModalPage("Filter_Recipes")}>Filter</IonButton>
+              {/* onClick={()=>openModalPage("Filter_Recipes")} */}
+              <IonButton color="warning" size="small">Filter</IonButton>
             </IonCol>
           </IonRow>
           {databaseInfo.Cookbook.map((Rec) => {
