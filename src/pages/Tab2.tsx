@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonList, IonModal, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCard, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonList, IonLoading, IonModal, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab2.css';
 import RecipeSlip from '../components/RecipeSlip';
 import ModalSubscreen from '../components/ModalSubscreen';
@@ -64,12 +64,36 @@ const databaseInfo = {
 export const Tab2: React.FC = () => {
   const[showModal, setShowModal] = useState(false);
 
-  let openRecipe = true;
-  let currentID = "null";
+  const[recInfo, setInfo] = useState<Array<any>>(["name", [], [], "0 hours"])
 
   const openModalPage = (ID: string) => {
-    currentID = ID;
+    setCurrentRecipe(ID);
     setShowModal(true);
+  }
+
+  const setCurrentRecipe = async (recName:string) => {
+    databaseInfo.Cookbook.forEach(element => {
+      let x = element.Recipe;
+      if(x.Name == recName){
+        let l_1 = [];
+        let l_2 = [];
+        let i = 0;
+        while(i < (x.Ingredients.length)/2){
+          l_1.push(x.Ingredients[i]);
+          i++;
+        }
+        while(i < x.Ingredients.length){
+          l_2.push(x.Ingredients[i]);
+          i++;
+        }
+        setInfo([recName, l_1, l_2, x.Duration])
+      }
+
+    });
+  }
+
+  function getInfo(index : number): any{
+    return recInfo[index];
   }
 
   const closeModal = () => {
@@ -87,9 +111,9 @@ export const Tab2: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen>
-        
+
         <IonModal isOpen={showModal}>
-          <ModalSubscreen closeFunction={(closeModal)}></ModalSubscreen>
+          <ModalSubscreen closeFunction={closeModal} getInfo={getInfo}/>
         </IonModal>
 
         <IonGrid>
