@@ -79,11 +79,11 @@ export const Tab2: React.FC = () => {
         let l_2 = [];
         let i = 0;
         while(i < (x.Ingredients.length)/2){
-          l_1.push(x.Ingredients[i]);
+          l_1.push(x.Ingredients[i].Ingredient);
           i++;
         }
         while(i < x.Ingredients.length){
-          l_2.push(x.Ingredients[i]);
+          l_2.push(x.Ingredients[i].Ingredient);
           i++;
         }
         setInfo([recName, l_1, l_2, x.Duration])

@@ -14,12 +14,10 @@ import {
     IonList, 
     IonLabel 
 } from "@ionic/react";
-import {closeOutline, information} from 'ionicons/icons';
+import {closeOutline} from 'ionicons/icons';
+import IngredientItem from '../components/RecipeIngredients';
 
 const ModalSubscreen: React.FC<{ closeFunction : () => void ; getInfo : (index : number) => any}> = (props) => {
-
-    let list1 : Array<string> = ["empty", "test"];
-    let list2 : Array<string> = ["empty", "test"];
 
     /*
     used to execute methods on render
@@ -28,9 +26,9 @@ const ModalSubscreen: React.FC<{ closeFunction : () => void ; getInfo : (index :
     })
     */
 
+
     return(
         <IonPage>
-            {}
             <IonHeader>
                 <IonToolbar color="danger">
                 <IonTitle color="dark" class="ion-padding">
@@ -51,33 +49,19 @@ const ModalSubscreen: React.FC<{ closeFunction : () => void ; getInfo : (index :
                     <IonRow>
 
                         <IonCol id="test">
-                        <IonList>
-                            <IonItem color="warning">
-                            <IonLabel>
-                                test
-                            </IonLabel>
-                            </IonItem>
-                            <IonItem color="warning">
-                            <IonLabel>
-                                test
-                            </IonLabel>
-                            </IonItem>
-                        </IonList>
+                            <IonList>
+                                {props.getInfo(1).map((item : any) => {
+                                    return <IngredientItem itemName={item} key={item}/>
+                                })}
+                            </IonList>
                         </IonCol>
                         
                         <IonCol offset="1" id="test">
                         <IonList>
-                            <IonItem color="warning">
-                            <IonLabel>
-                                test
-                            </IonLabel>
-                            </IonItem>
-                            <IonItem color="warning">
-                            <IonLabel>
-                                test
-                            </IonLabel>
-                            </IonItem>
-                        </IonList>
+                                {props.getInfo(2).map((item : any) => {
+                                    return <IngredientItem itemName={item} key={item}/>
+                                })}
+                            </IonList>
                         </IonCol>
                     </IonRow>
                     </IonGrid>
