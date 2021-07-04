@@ -2,7 +2,7 @@ import { IonButton, IonCard, IonCol, IonContent, IonGrid, IonHeader, IonIcon, Io
 import './Tab2.css';
 import RecipeSlip from '../components/RecipeSlip';
 import ModalSubscreen from '../components/ModalSubscreen';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const databaseInfo = {
   "Cookbook": [
@@ -66,6 +66,10 @@ export const Tab2: React.FC = () => {
 
   const[recInfo, setInfo] = useState<Array<any>>(["name", [], [], "0 hours"])
 
+  const [data,setData] = useState<Object>();
+
+  const [start, triggerStart] = useState(false);
+
   const openModalPage = (ID: string) => {
     setCurrentRecipe(ID);
     setShowModal(true);
@@ -99,6 +103,32 @@ export const Tab2: React.FC = () => {
   const closeModal = () => {
     setShowModal(false);
   }
+
+  const getData = () => {
+    fetch('test.json'
+    ,{
+      headers : {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      }
+    }
+    )
+      .then(function(response){
+        console.log(response)
+        return response.json();
+      })
+      .then(function(myJson){
+        console.log(myJson);
+        setData(myJson)
+      });
+  }
+
+  useEffect(()=>{
+    if(start){
+      getData();
+      triggerStart(true);
+    }
+  })
 
   return (
     <IonPage>
