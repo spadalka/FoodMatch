@@ -57,14 +57,30 @@ const ModalSubscreen: React.FC<{ closeFunction : () => void ; getInfo : (index :
                         </IonCol>
                         
                         <IonCol offset="1" id="test">
-                        <IonList>
+                            <IonList>
                                 {props.getInfo(2).map((item : any) => {
                                     return <IngredientItem itemName={item} key={item}/>
                                 })}
                             </IonList>
                         </IonCol>
                     </IonRow>
-                    </IonGrid>
+                </IonGrid>
+
+                <IonItem>
+                    Missing Ingredients
+                </IonItem>
+
+                <IonGrid>
+                    <IonRow>
+                        <IonCol>
+                            <IngredientItem itemName={"Test"}/>
+                        </IonCol>
+
+                        <IonCol offset="1" id="test">
+                            <IngredientItem itemName={"Test"}/>
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
             </IonContent>
         </IonPage>
     )
