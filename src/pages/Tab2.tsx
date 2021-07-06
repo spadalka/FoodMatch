@@ -1,8 +1,8 @@
-import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonModal, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCard, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonList, IonLoading, IonModal, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab2.css';
 import RecipeSlip from '../components/RecipeSlip';
-import { useState } from 'react';
-import {closeOutline} from 'ionicons/icons';
+import ModalSubscreen from '../components/ModalSubscreen';
+import { useEffect, useState } from 'react';
 
 const databaseInfo = {
   "Cookbook": [
@@ -64,13 +64,71 @@ const databaseInfo = {
 export const Tab2: React.FC = () => {
   const[showModal, setShowModal] = useState(false);
 
-  let openRecipe = true;
-  let currentID = "null";
+  const[recInfo, setInfo] = useState<Array<any>>(["name", [], [], "0 hours"])
 
-  const openRecipePage = (ID: string) => {
-    currentID = ID;
+  const [data,setData] = useState<Object>();
+
+  const [start, triggerStart] = useState(false);
+
+  const openModalPage = (ID: string) => {
+    setCurrentRecipe(ID);
     setShowModal(true);
   }
+
+  const setCurrentRecipe = async (recName:string) => {
+    databaseInfo.Cookbook.forEach(element => {
+      let x = element.Recipe;
+      if(x.Name == recName){
+        let l_1 = [];
+        let l_2 = [];
+        let i = 0;
+        while(i < (x.Ingredients.length)/2){
+          l_1.push(x.Ingredients[i].Ingredient);
+          i++;
+        }
+        while(i < x.Ingredients.length){
+          l_2.push(x.Ingredients[i].Ingredient);
+          i++;
+        }
+        setInfo([recName, l_1, l_2, x.Duration])
+      }
+
+    });
+  }
+
+  function getInfo(index : number): any{
+    return recInfo[index];
+  }
+
+  const closeModal = () => {
+    setShowModal(false);
+  }
+
+  const getData = () => {
+    fetch('test.json'
+    ,{
+      headers : {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json'
+      }
+    }
+    )
+      .then(function(response){
+        console.log(response)
+        return response.json();
+      })
+      .then(function(myJson){
+        console.log(myJson);
+        setData(myJson)
+      });
+  }
+
+  useEffect(()=>{
+    if(start){
+      getData();
+      triggerStart(true);
+    }
+  })
 
   return (
     <IonPage>
@@ -83,30 +141,20 @@ export const Tab2: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen>
-        
+
         <IonModal isOpen={showModal}>
-          <IonHeader>
-            <IonToolbar color="danger">
-              <IonTitle color="dark" class="ion-padding">
-                Recipe
-              </IonTitle>
-              <IonIcon slot="end" icon={closeOutline} color="dark" size="large" onClick={()=> setShowModal(false)} class="ion-padding"></IonIcon>
-            </IonToolbar>
-          </IonHeader>
-          <IonContent>
-            <IonImg src="https://lh3.googleusercontent.com/proxy/HqhAqJFzfO-aOwC057fOfMj-CtRDWUXb_uGIFtMuecMsCGSoPIyxGu5ThFUL0l92BI0mgPIG-5S58eQNO7ZaMPUcQdMgVi87iD_sSeafx8OdQ5fqVDH2qJCR51b4y5cvpBZnXO2nfxgFAw" alt="food wallpaper"/>
-          </IonContent>
-          
+          <ModalSubscreen closeFunction={closeModal} getInfo={getInfo}/>
         </IonModal>
 
         <IonGrid>
           <IonRow>
             <IonCol className="ion-text-right">
-              <IonButton color="warning" size="small" onClick={()=>openRecipePage("Filter_Recipes")}>Filter</IonButton>
+              {/* onClick={()=>openModalPage("Filter_Recipes")} */}
+              <IonButton color="warning" size="small">Filter</IonButton>
             </IonCol>
           </IonRow>
           {databaseInfo.Cookbook.map((Rec) => {
-            return <RecipeSlip recipeName={Rec.Recipe.Name} recipeDuration={Rec.Recipe.Duration} missingCount={Rec.Recipe.Ingredients.length}/>
+            return <RecipeSlip recipeName={Rec.Recipe.Name} recipeDuration={Rec.Recipe.Duration} missingCount={Rec.Recipe.Ingredients.length} openModalFunction={openModalPage}/>
           })}
         </IonGrid>
         
