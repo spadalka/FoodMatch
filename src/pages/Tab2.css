@@ -1,0 +1,19 @@
+:root{
+    /** custom color setup **/
+  --ion-color-beige: #FFD791;
+  --ion-color-beige-rgb: 255,215,145;
+  --ion-color-beige-contrast: #000000;
+  --ion-color-beige-contrast-rgb: 0,0,0;
+  --ion-color-beige-shade: #e0bd80;
+  --ion-color-beige-tint: #ffdb9c;
+}
+
+/** Custom color classes **/
+.ion-color-beige{
+    --ion-color-base: var(--ion-color-beige);
+    --ion-color-base-rgb: var(--ion-color-beige-rgb);
+    --ion-color-contrast: var(--ion-color-beige-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-beige-contrast-rgb);
+    --ion-color-shade: var(--ion-color-beige-shade);
+    --ion-color-tint: var(--ion-color-beige-tint);
+}
