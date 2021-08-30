@@ -1,11 +1,11 @@
 :root{
     /** custom color setup **/
-  --ion-color-beige: #FFD791;
-  --ion-color-beige-rgb: 255,215,145;
+  --ion-color-beige: #DFBC7C;
+  --ion-color-beige-rgb: 223,188,124;
   --ion-color-beige-contrast: #000000;
   --ion-color-beige-contrast-rgb: 0,0,0;
-  --ion-color-beige-shade: #e0bd80;
-  --ion-color-beige-tint: #ffdb9c;
+  --ion-color-beige-shade: #c4a56d;
+  --ion-color-beige-tint: #e2c389;
 }
 
 /** Custom color classes **/
