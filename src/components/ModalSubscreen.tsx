@@ -17,7 +17,7 @@ import {
 import {closeOutline} from 'ionicons/icons';
 import IngredientItem from '../components/RecipeIngredients';
 
-const ModalSubscreen: React.FC<{ closeFunction : () => void ; getInfo : (index : number) => any}> = (props) => {
+const ModalSubscreen: React.FC<{ popUpType : number ; closeFunction : () => void ; getInfo : (index : number) => any}> = (props) => {
 
     /*
     used to execute methods on render
@@ -27,19 +27,34 @@ const ModalSubscreen: React.FC<{ closeFunction : () => void ; getInfo : (index :
     */
 
 
+    /*
+    popUpType -> Used to display different menus on a modal
+    1: shows the recipe provided externally
+    2: shows a filter page that changes how the previous menu was filtered
+    */
+
     return(
         <IonPage>
-            <IonHeader>
-                <IonToolbar color="danger">
-                <IonTitle color="dark" class="ion-padding">
-                    {props.getInfo(0)} Recipe
-                </IonTitle>
-                <IonIcon slot="end" icon={closeOutline} color="dark" size="large" onClick={()=> props.closeFunction()} class="ion-padding"></IonIcon>
-                </IonToolbar>
-            </IonHeader>
+            
+            {props.popUpType == 1 && (
+                <IonHeader>
+                    
+                        <IonToolbar color="danger">
+                        <IonTitle color="dark" class="ion-padding">
+                            {props.getInfo(0)} Recipe
+                        </IonTitle>
+                        <IonIcon slot="end" icon={closeOutline} color="dark" size="large" onClick={()=> props.closeFunction()} class="ion-padding"></IonIcon>
+                        </IonToolbar>
+                    
+                    
+                </IonHeader>
 
+            )}
+            
+            {props.popUpType == 1 && (
             <IonContent>
-                <IonImg src="https://wallpaperaccess.com/full/4393443.jpg" alt="food wallpaper"/>
+            
+                <IonImg src="https://wallpaperaccess.com/full/4393443.jpg" alt="food wallpaper" />
 
                 <IonItem>
                     Owned Ingredients
@@ -81,7 +96,27 @@ const ModalSubscreen: React.FC<{ closeFunction : () => void ; getInfo : (index :
                         </IonCol>
                     </IonRow>
                 </IonGrid>
+            
             </IonContent>
+            )}
+
+            {props.popUpType != 1 && (
+                <IonHeader>
+                    
+                <IonToolbar color="beige">
+                <IonIcon slot="end" icon={closeOutline} color="dark" size="large" onClick={()=> props.closeFunction()} class="ion-padding"></IonIcon>
+                </IonToolbar>
+            
+            
+                </IonHeader>
+            )}
+
+            {props.popUpType != 1 && (
+                <IonContent color="beige">
+
+                </IonContent>
+            )}
+
         </IonPage>
     )
 }
