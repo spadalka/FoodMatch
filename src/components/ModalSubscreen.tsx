@@ -40,7 +40,7 @@ const ModalSubscreen: React.FC<{ popUpType : number ; closeFunction : () => void
             {props.popUpType == 1 && (
                 <IonHeader>
                     
-                        <IonToolbar color="danger">
+                        <IonToolbar color="red1">
                         <IonTitle color="dark" class="ion-padding">
                             {props.getInfo(0)} Recipe
                         </IonTitle>
