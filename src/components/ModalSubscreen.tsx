@@ -12,7 +12,8 @@ import {
     IonRow, 
     IonCol, 
     IonList, 
-    IonLabel 
+    IonLabel, 
+    IonText
 } from "@ionic/react";
 import {closeOutline} from 'ionicons/icons';
 import IngredientItem from '../components/RecipeIngredients';
@@ -103,8 +104,11 @@ const ModalSubscreen: React.FC<{ popUpType : number ; closeFunction : () => void
             {props.popUpType != 1 && (
                 <IonHeader>
                     
-                <IonToolbar color="beige">
-                <IonIcon slot="end" icon={closeOutline} color="dark" size="large" onClick={()=> props.closeFunction()} class="ion-padding"></IonIcon>
+                <IonToolbar color="red1">
+                    <IonTitle color="dark" class="ion-padding">
+                        Filter
+                    </IonTitle>
+                    <IonIcon slot="end" icon={closeOutline} color="dark" size="large" onClick={()=> props.closeFunction()} class="ion-padding"></IonIcon>
                 </IonToolbar>
             
             
@@ -113,6 +117,10 @@ const ModalSubscreen: React.FC<{ popUpType : number ; closeFunction : () => void
 
             {props.popUpType != 1 && (
                 <IonContent color="beige">
+                    <IonItem color="beige"/>
+                    <IonItem color="beige">
+                        Display preference
+                    </IonItem>
 
                 </IonContent>
             )}
