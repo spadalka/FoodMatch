@@ -72,6 +72,13 @@ export const Tab2: React.FC = () => {
 
   const [currentMode, changeMode] = useState<number>(1);
 
+  /*
+  modalPage stores the setting in which will be used when opening a modal page
+  the variable will tell the modal page whether to format itself as either:
+    (when value = 1) a recipe info page
+    (when value = 2) a filter setting page
+  These values are changed by both the "openModalRecipePage" function and the "openModalFilterPage" function
+  */
   const [modalPage, setModalPage] = useState<number>(1);
 
   const openModalRecipePage = (ID: string) => {
@@ -159,7 +166,6 @@ export const Tab2: React.FC = () => {
         <IonGrid>
           <IonRow>
             <IonCol className="ion-text-right">
-              {/* onClick={()=>openModalPage("Filter_Recipes")} */}
               <IonButton color="beige" size="small" onClick={openModalFilterPage}>Filter</IonButton>
             </IonCol>
           </IonRow>
