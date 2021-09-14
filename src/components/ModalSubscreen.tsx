@@ -139,8 +139,6 @@ const ModalSubscreen: React.FC<{ popUpType : number ; closeFunction : () => void
                 {/*code below is for formatting purposes*/}
 
                 <IonItem color="warning"></IonItem>
-
-                <IonItem></IonItem>
                 
             </IonContent>
             )}
