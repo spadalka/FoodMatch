@@ -70,8 +70,20 @@ export const Tab2: React.FC = () => {
 
   const [start, triggerStart] = useState(false);
 
-  const openModalPage = (ID: string) => {
+  const [currentMode, changeMode] = useState<number>(1);
+
+  /*
+  modalPage stores the setting in which will be used when opening a modal page
+  the variable will tell the modal page whether to format itself as either:
+    (when value = 1) a recipe info page
+    (when value = 2) a filter setting page
+  These values are changed by both the "openModalRecipePage" function and the "openModalFilterPage" function
+  */
+  const [modalPage, setModalPage] = useState<number>(1);
+
+  const openModalRecipePage = (ID: string) => {
     setCurrentRecipe(ID);
+    setModalPage(1);
     setShowModal(true);
   }
 
@@ -104,6 +116,11 @@ export const Tab2: React.FC = () => {
     setShowModal(false);
   }
 
+  const openModalFilterPage = () => {
+    setModalPage(2);
+    setShowModal(true);
+  }
+
   const getData = () => {
     fetch('test.json'
     ,{
@@ -133,7 +150,7 @@ export const Tab2: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color="danger">
+        <IonToolbar color="red1">
           <IonTitle color="dark" class="ion-padding">
             Recipe<br/>Library
           </IonTitle>
@@ -143,18 +160,17 @@ export const Tab2: React.FC = () => {
       <IonContent fullscreen>
 
         <IonModal isOpen={showModal}>
-          <ModalSubscreen closeFunction={closeModal} getInfo={getInfo}/>
+          <ModalSubscreen popUpType={modalPage} closeFunction={closeModal} getInfo={getInfo}/>
         </IonModal>
 
         <IonGrid>
           <IonRow>
             <IonCol className="ion-text-right">
-              {/* onClick={()=>openModalPage("Filter_Recipes")} */}
-              <IonButton color="warning" size="small">Filter</IonButton>
+              <IonButton color="beige" size="small" onClick={openModalFilterPage}>Filter</IonButton>
             </IonCol>
           </IonRow>
           {databaseInfo.Cookbook.map((Rec) => {
-            return <RecipeSlip recipeName={Rec.Recipe.Name} recipeDuration={Rec.Recipe.Duration} missingCount={Rec.Recipe.Ingredients.length} openModalFunction={openModalPage}/>
+            return <RecipeSlip recipeName={Rec.Recipe.Name} recipeDuration={Rec.Recipe.Duration} missingCount={Rec.Recipe.Ingredients.length} openModalFunction={openModalRecipePage}/>
           })}
         </IonGrid>
         

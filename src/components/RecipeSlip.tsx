@@ -6,6 +6,7 @@ import {
   IonCardTitle,
   IonCardContent,
 } from "@ionic/react";
+import '../pages/Tab2.css';
 
 const RecipeSlip: React.FC<{
   recipeName: string;
@@ -16,7 +17,7 @@ const RecipeSlip: React.FC<{
   return (
     <IonRow>
       <IonCol>
-        <IonCard color="warning" class="ion-no-margin" button={true} onClick={()=>props.openModalFunction(props.recipeName)}>
+        <IonCard color="beige" class="ion-no-margin" button={true} onClick={()=>props.openModalFunction(props.recipeName)}>
           <IonCardTitle class="ion-padding">{props.recipeName}</IonCardTitle>
 
           <IonCardContent>

@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 const RecipeIngredients: React.FC<{itemName : string}> = (props) => {
     
     return(
-        <IonItem color="warning">
+        <IonItem color="beige">
             <IonLabel>
                 {props.itemName}
             </IonLabel>
