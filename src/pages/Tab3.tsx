@@ -1,9 +1,12 @@
 import {
+  IonBadge,
   IonButton,
+  IonChip,
   IonCol,
   IonContent,
   IonGrid,
   IonHeader,
+  IonIcon,
   IonItem,
   IonLabel,
   IonPage,
@@ -11,10 +14,40 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import ExploreContainer from "../components/ExploreContainer";
+import { closeCircle } from "ionicons/icons";
+import { useState } from "react";
 import "./Tab3.css";
+import IngredientIndicator from "../components/IngredientIndicator";
+
+const ingDatabase = {
+  "inventory":[
+    {
+      "item1" : "Tomato",
+      "item2" : "Potato"
+    },
+    {
+      "item1" : "Lettuce",
+      "item2" : "Broccoli"
+    },
+    {
+      "item1" : "Cabbage",
+      "item2" : "Spinach"
+    },
+    {
+      "item1" : "eggs",
+      "item2" : "tofu"
+    },
+    {
+      "item1" : "salad",
+      "item2" : ""
+    }
+  ]
+}
 
 const Tab3: React.FC = () => {
+  
+  const[editMode, setEditMode] = useState(false);
+  
   return (
     <IonPage>
       <IonHeader>
@@ -27,28 +60,15 @@ const Tab3: React.FC = () => {
 
       <IonContent fullscreen>
         <IonGrid>
-          <IonRow class="ion-text-center">
-            <IonCol>
-              <IonButton color="cyan">Tomato</IonButton>
-            </IonCol>
-            <IonCol>
-              <IonButton color="cyan">Potato</IonButton>
-            </IonCol>
-          </IonRow>
-          <IonRow class="ion-text-center">
-            <IonCol>
-              <IonButton color="cyan">Lettuce</IonButton>
-            </IonCol>
-            <IonCol>
-              <IonButton color="cyan">Broccoli</IonButton>
-            </IonCol>
-          </IonRow>
+          {ingDatabase.inventory.map((Rec) => {
+            return <IngredientIndicator ingredient_1 = {Rec.item1} ingredient_2 = {Rec.item2} editMode={editMode}/>
+          })}
         </IonGrid>
 
         <IonGrid>
           <IonRow class="ion-text-center">
             <IonCol>
-              <IonButton color="danger" expand="block">
+              <IonButton color="danger" expand="block" onClick={()=>setEditMode(!editMode)}>
                 <IonLabel color="dark">
                   Edit
                   </IonLabel>
