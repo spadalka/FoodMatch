@@ -20,7 +20,11 @@ import {
 import {closeOutline} from 'ionicons/icons';
 import IngredientItem from '../components/RecipeIngredients';
 
-const ModalSubscreen: React.FC<{ popUpType : number ; closeFunction : () => void ; getInfo : (index : number) => any}> = (props) => {
+const ModalSubscreen: React.FC<{ 
+    popUpType : number ; 
+    closeFunction : () => void ; 
+    getInfo : (index : number) => any
+}> = (props) => {
 
     /*
     used to execute methods on render
@@ -49,7 +53,8 @@ const ModalSubscreen: React.FC<{ popUpType : number ; closeFunction : () => void
     return(
         <IonPage>
             
-            {props.popUpType == 1 && (
+            {
+            props.popUpType == 1 && (
                 <IonHeader>
                     
                         <IonToolbar color="red1">
@@ -67,7 +72,7 @@ const ModalSubscreen: React.FC<{ popUpType : number ; closeFunction : () => void
             {props.popUpType == 1 && (
             <IonContent>
             
-                <IonImg src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80" alt="food wallpaper" />
+                <IonImg src="assets/recipeVisualTemp.jpg" alt="food wallpaper" />
 
                 <IonItem>
                     Owned Ingredients
