@@ -9,22 +9,20 @@ import {
 import '../pages/Tab2.css';
 
 const RecipeSlip: React.FC<{
-  recipeName: string;
-  recipeDuration: string;
-  missingCount: number;
+  recipe : any
   openModalFunction: (input : string) => void;
 }> = (props) => {
   return (
     <IonRow>
       <IonCol>
-        <IonCard color="beige" class="ion-no-margin" button={true} onClick={()=>props.openModalFunction(props.recipeName)}>
-          <IonCardTitle class="ion-padding">{props.recipeName}</IonCardTitle>
+        <IonCard color="beige" class="ion-no-margin" button={true} onClick={()=>props.openModalFunction(props.recipe.Name)}>
+          <IonCardTitle class="ion-padding">{props.recipe.Name}</IonCardTitle>
 
           <IonCardContent>
             <h2>
-              {props.recipeDuration}
+              {/*props.recipe[0].Recipe.Duration*/"20 minutes"}
               <br/>
-              {props.missingCount} Ingredients Involved
+              {/*props.recipe[0].Recipe.Length*/"7"} Ingredients Involved
             </h2>
           </IonCardContent>
         </IonCard>
