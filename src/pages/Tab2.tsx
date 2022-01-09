@@ -12,8 +12,6 @@ export const Tab2: React.FC = () => {
 
   const [data,setData] = useState(null) as any;
 
-  const [format,setFormat] = useState();
-
   const [currentMode, changeMode] = useState<number>(1);
 
   /*
@@ -27,13 +25,20 @@ export const Tab2: React.FC = () => {
 
   function infoExtraction(src : any){
     let output = new Array();
-    for(let indivID in Data.IDs){
-      output.push(getSpecificRecipe(src, indivID).Recipe);
-    }
+    Data.IDs.map((index) => {
+      output.push(getSpecificElement(src, index).Recipe);
+    })
+      //output.push(getSpecificElement(src, getSpecificElement(IDList, i)))
+      //console.log(getSpecificElement(IDList, i))
+      //i++;
+    //console.log(output)
+    // for(let indivID in Data.IDs){
+    //   output.push(getSpecificElement(src, indivID).Recipe);
+    // }
     setData(output);
   }
 
-  function getSpecificRecipe(src : any, index : string) : any {
+  function getSpecificElement(src : any, index : number) : any {
     return src[index];
   }
 
