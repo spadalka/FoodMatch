@@ -28,13 +28,6 @@ export const Tab2: React.FC = () => {
     Data.IDs.map((index) => {
       output.push(getSpecificElement(src, index).Recipe);
     })
-      //output.push(getSpecificElement(src, getSpecificElement(IDList, i)))
-      //console.log(getSpecificElement(IDList, i))
-      //i++;
-    //console.log(output)
-    // for(let indivID in Data.IDs){
-    //   output.push(getSpecificElement(src, indivID).Recipe);
-    // }
     setData(output);
   }
 
